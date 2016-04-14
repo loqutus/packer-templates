@@ -1,0 +1,33 @@
+{
+  "variables": {
+    "source_ami_id": "ami-af4333cf",
+    "aws_region": "us-west-1",
+    "dest_ami_name": "CentOS-7.2-HVM-Patched-{{timestamp}}"
+  },
+
+  "builders": [{
+      "type": "amazon-ebs",
+      "region": "{{user `aws_region`}}",
+      "source_ami": "{{user `source_ami_id`}}",
+      "instance_type": "t2.micro",
+      "ami_block_device_mappings": [
+        {
+          "device_name": "/dev/sda1",
+          "volume_type": "gp2",
+          "delete_on_termination": true
+        }
+      ],
+      "ssh_username": "centos",
+      "ssh_pty": true,
+      "ami_name": "{{user `dest_ami_name`}}",
+      "ami_description": "CentOS 7 HVM AMI based on the official Marketplace image with latest patches applied"
+    }],
+
+  "provisioners": [{
+    "type": "shell",
+    "inline": [
+      "sudo yum clean all",
+      "sudo yum update -y"
+    ]
+  }]
+}

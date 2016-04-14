@@ -10,3 +10,4 @@ TL;DR: It's a tool for automatically generating machine images for different pla
 The following Packer templates are contained within directories in this repository:
 
 * aws-centos6-hvm-resizerootfix: Creates a CentOS 6 HVM AMI that properly resizes the root filesystem during instance creation.
+* aws-centos7-hvm-patched: Creates a CentOS 7 HVM AMI with latest patches applied.
