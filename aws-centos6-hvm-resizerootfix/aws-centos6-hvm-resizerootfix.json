@@ -30,7 +30,8 @@
       "sudo yum clean all",
       "sudo yum install -y cloud-init cloud-utils-growpart dracut-modules-growroot",
       "sudo yum update -y",
-      "sudo dracut --force"
+      "sudo dracut --force",
+      "sudo yum clean all"
     ]
   }]
 }
